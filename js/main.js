@@ -3,12 +3,11 @@ try {
     (function () {
         $.ajax({
             type: "get",
-            // url: "http://localhost:3000/HTMLCSSJS/json/bigData.json",
             url: "https://github.com/mnmawapuri/HTMLCSSJS/blob/master/json/bigData.json",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                debugger;
+                //debugger;
                 DataGridDatabase = response;
                 DataGridDatabase.sort().reverse();
                 BindDataGrid(null);

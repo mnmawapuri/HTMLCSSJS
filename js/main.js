@@ -1,19 +1,21 @@
 try {
     var DataGridDatabase = [];
     (function () {
-        // $.getJSON("http://localhost:3000/HTMLCSSJS/json/bigData.json", {
-            $.getJSON("https://github.com/mnmawapuri/HTMLCSSJS/blob/master/json/bigData.json", {
-            // tagmode: "any",
-            // format: "json"
-        }).done(function (response) {
-            //debugger;
-            DataGridDatabase = response;
-            DataGridDatabase.sort().reverse();
-            //console.log(DataGridDatabase);
-        }).fail(function (error) {
-            console.log(error);
-        }).always(function () {
-            BindDataGrid(null)
+        $.ajax({
+            type: "get",
+            // url: "http://localhost:3000/HTMLCSSJS/json/bigData.json",
+            url: "https://github.com/mnmawapuri/HTMLCSSJS/blob/master/json/bigData.json",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                debugger;
+                DataGridDatabase = response;
+                DataGridDatabase.sort().reverse();
+                BindDataGrid(null);
+            },
+            failure: function (response) {
+                console.log(response);
+            }
         });
     })();
 
@@ -27,7 +29,7 @@ try {
         }
         //console.log("PageNos: " + PageNos);
 
-        $("#LastPage").attr("onclick", "BindDataGrid(" + PageNos + ")");
+        $("#LastPage").attr("onclick", "BindDataGrid(" + PageNos + ", 'Last')");
 
         var DataGrid = "<table id='DataGridTable' border-collapse='collapse' border='1px solid black' width='100%'>" +
             "<thead><tr style='font-size:20px'>" +
@@ -94,13 +96,8 @@ try {
         }
         else if (Number.isInteger(params)) {
             //console.log("Params: " + params);
-            if (params > 5 && params != PageNos && action == "Next") {
-                for (let index = (params - 5 + 1); index <= params; index++) {
-                    html += "<button type='button' id='Pagination-Button-" + index + "' onclick='BindDataGrid(" + index + ")' class='Current' style='margin:5px;'>" + index + "</button>";
-                }
-            }
-            else if (params > 5 && params == PageNos && action == "Next") {
-                for (let index = (PageNos - 5 + 1); index <= PageNos; index++) {
+            if (action == "First") {
+                for (let index = 1; index <= 5; index++) {
                     html += "<button type='button' id='Pagination-Button-" + index + "' onclick='BindDataGrid(" + index + ")' class='Current' style='margin:5px;'>" + index + "</button>";
                 }
             }
@@ -119,6 +116,24 @@ try {
                         html += "<button type='button' id='Pagination-Button-" + $("#" + CurrentPageNos[index].id).text() + "' onclick='BindDataGrid(" + $("#" + CurrentPageNos[index].id).text() + ")' class='Current' style='margin:5px;'>" + $("#" + CurrentPageNos[index].id).text() + "</button>";
                     }
                 });
+            }
+            else if (action == "Next" || action == "Last") {
+                if (params > 5 && params != PageNos) {
+                    for (let index = (params - 5 + 1); index <= params; index++) {
+                        html += "<button type='button' id='Pagination-Button-" + index + "' onclick='BindDataGrid(" + index + ")' class='Current' style='margin:5px;'>" + index + "</button>";
+                    }
+                }
+                else if (params > 5 && params == PageNos) {
+                    for (let index = (PageNos - 5 + 1); index <= PageNos; index++) {
+                        html += "<button type='button' id='Pagination-Button-" + index + "' onclick='BindDataGrid(" + index + ")' class='Current' style='margin:5px;'>" + index + "</button>";
+                    }
+                }
+                else if (PageNos >= 5) {
+                    var CurrentPageNos = $("#PageNos").find(".Current");
+                    $(CurrentPageNos).each(function (index, value) {
+                        html += "<button type='button' id='Pagination-Button-" + $("#" + CurrentPageNos[index].id).text() + "' onclick='BindDataGrid(" + $("#" + CurrentPageNos[index].id).text() + ")' class='Current' style='margin:5px;'>" + $("#" + CurrentPageNos[index].id).text() + "</button>";
+                    });
+                }
             }
             else if (PageNos >= 5) {
                 var CurrentPageNos = $("#PageNos").find(".Current");

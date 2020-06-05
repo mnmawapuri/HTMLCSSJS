@@ -1,7 +1,8 @@
 try {
     var DataGridDatabase = [];
     (function () {
-        $.getJSON("http://localhost:3000/HTMLCSSJS/json/bigData.json", {
+        // $.getJSON("http://localhost:3000/HTMLCSSJS/json/bigData.json", {
+            $.getJSON("https://github.com/mnmawapuri/HTMLCSSJS/blob/master/json/bigData.json", {
             tagmode: "any",
             format: "json"
         }).done(function (response) {

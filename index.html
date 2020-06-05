@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>HTML-CSS-JS Data Grid Based JSON Database</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <input type="hidden" id="PageIndex" value="1">
+        <input type="hidden" id="PageSize" value="10">
+        <input type="hidden" id="CurrentPage" value="1">
+
+        <h3 class="text-center">
+            HTML-CSS-JS DataGrid Based On JSON Database
+        </h3>
+
+        <div class="row text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="DataGridHeader">
+                    <span style="float: left;">
+                        <select id="ddlPageSize" onchange="BindDataGrid(null)">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </span>
+                    <!-- <span style="float: right;">
+                        <button type="button" id="Add" onclick="">Add</button>
+                        <button type="button" id="Edit" onclick="">Edit</button>
+                        <button type="button" id="Update" onclick="">Update</button>
+                        <button type="button" id="Delete" onclick="">Delete</button>
+                        <button type="button" id="Cancel" onclick="">Cancel</button>
+                    </span> -->
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="Status">
+                            </td>
+                            <td>
+                                <input type="text" id="Username" placeholder="Enter Username">
+                            </td>
+                            <td>
+                                <input type="text" id="Password" placeholder="Enter Password">
+                            </td>
+                            <td>
+                                <input type="email" id="Email" placeholder="Enter Email">
+                            </td>
+                            <td>
+                                <input type="tel" id="MobileNo" maxlength="10" placeholder="Enter Mobile No">
+                            </td>
+                            <td>
+                                <input type="radio" id="Male" name="Gender" value="M"> Male
+                                <input type="radio" id="Female" name="Gender" value="F"> Female
+                            </td>
+                            <td>
+                                <select id="ddlCountryCode">
+                                    <option selected>Select Country Code</option>
+                                    <option value="IN">IN</option>
+                                    <option value="PT">PT</option>
+                                    <option value="ET">ET</option>
+                                    <option value="KR">KR</option>
+                                    <option value="ID">ID</option>
+                                    <option value="PL">PL</option>
+                                    <option value="BW">BW</option>
+                                    <option value="CN">CN</option>
+                                    <option value="LV">LV</option>
+                                    <option value="RU">RU</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="button" id="Save" onclick="ControlValidation()">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div> -->
+                
+                <div id="DataGrid">
+                </div>
+
+                <div id="DataGridFooter">
+                    <button type="button" id="FirstPage" onclick="BindDataGrid(1)">First Page</button>
+                    <button type="button" id="PrevPage" onclick="PrevPage()">Prev Page</button>
+                    <span id="PageNos"></span>
+                    <button type="button" id="NextPage" onclick="NextPage()">Next Page</button>
+                    <button type="button" id="LastPage">Last Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script>
+
+
+    </script>
+</body>
+
+</html>

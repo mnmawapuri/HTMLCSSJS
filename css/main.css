@@ -1,0 +1,11 @@
+#DataGridHeader {
+    margin-top: 20px;
+}
+
+#DataGrid, #DataGridFooter {
+    margin-top: 10px;
+}
+
+#DataGridFooter {
+    margin-bottom: 50px;
+}

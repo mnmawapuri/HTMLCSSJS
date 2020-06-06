@@ -3,8 +3,9 @@ try {
     (function () {
         $.ajax({
             type: "get",
-            url: "https://github.com/mnmawapuri/HTMLCSSJS/blob/master/json/bigData.json",
+            url: "https://mnmawapuri.github.io/HTMLCSSJS/json/bigData.json",
             contentType: "application/json; charset=utf-8",
+            header: "Access-Control-Allow-Origin *",
             dataType: "json",
             success: function (response) {
                 //debugger;
